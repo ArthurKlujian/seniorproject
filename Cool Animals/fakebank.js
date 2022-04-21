@@ -196,3 +196,38 @@ const activateDot = function (slide) {
  
   document.querySelector(`.dots__dot[data-slide="${slide}"]`).classList.add('dots__dot--active');
 };
+
+
+//sticky navigatino :D
+const navHeight = nav.getBoundingClientRect().height;
+const stickyNav = function(entries){
+  const [entry] = entries;
+  if(!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+
+headerObserver.observe(header);
+
+//section revealing
+
+
+const revealSection = function(entries, observer){
+  const [entry] = entries;
+
+  if(!entry.isIntersecting) return;
+ 
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+}
+
+const sectionObserver = new IntersectionObserver(revealSection,{})
+allSections.forEach(function(section){
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+})
