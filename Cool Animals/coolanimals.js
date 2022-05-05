@@ -231,3 +231,4 @@ allSections.forEach(function(section){
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
 })
+

@@ -7,6 +7,6 @@ function tipcalculator(bill){
     return result;
 }
 
-console.log(tipcalculator(275));
-console.log(tipcalculator(40));
-console.log(tipcalculator(430));
+const input = prompt("Thank you Clark judges for your time!");
+const num = parseInt(input);
+console.log(tipcalculator(num));
